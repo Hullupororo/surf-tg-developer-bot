@@ -15,7 +15,8 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1459749411177-042180ce673c?q=80&w=2070&auto=format&fit=crop'
     ],
-    features: ['Luxury Villa', 'Video Coaching', 'Yoga Sessions', 'Private Chef']
+    features: ['Luxury Villa', 'Video Coaching', 'Yoga Sessions', 'Private Chef'],
+    coordinates: [-8.8291, 115.0847]
   },
   {
     id: '2',
@@ -30,7 +31,8 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?q=80&w=2000&auto=format&fit=crop'
     ],
-    features: ['Boutique Riad', 'Airport Transfer', 'Wetsuit Rental', 'Local Market Tours']
+    features: ['Boutique Riad', 'Airport Transfer', 'Wetsuit Rental', 'Local Market Tours'],
+    coordinates: [30.5454, -9.7081]
   },
   {
     id: '3',
@@ -45,7 +47,8 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1516939884455-1445c8652f83?q=80&w=1974&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1501166300412-f040854ca638?q=80&w=2070&auto=format&fit=crop'
     ],
-    features: ['Surf House Stay', 'Daily Transport', 'Sunset BBQ', 'City Tour']
+    features: ['Surf House Stay', 'Daily Transport', 'Sunset BBQ', 'City Tour'],
+    coordinates: [38.9638, -9.4169]
   },
   {
     id: '4',
@@ -60,7 +63,8 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?q=80&w=2000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1459749411177-042180ce673c?q=80&w=2070&auto=format&fit=crop'
     ],
-    features: ['Community Lodging', 'Board Workshop', 'Cultural Immersive', 'Local Guides']
+    features: ['Community Lodging', 'Board Workshop', 'Cultural Immersive', 'Local Guides'],
+    coordinates: [4.8009, -2.2822]
   },
   {
     id: '5',
@@ -75,7 +79,8 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?q=80&w=1974&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1482190523580-008103685954?q=80&w=2070&auto=format&fit=crop'
     ],
-    features: ['Thermal Gear', '4x4 Support', 'Luxury Cabin', 'Hot Springs Access']
+    features: ['Thermal Gear', '4x4 Support', 'Luxury Cabin', 'Hot Springs Access'],
+    coordinates: [64.1466, -21.9426]
   },
   {
     id: '6',
@@ -90,7 +95,8 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1516245834210-c4c142787335?q=80&w=2069&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1523315904834-39f28a8d11c8?q=80&w=2070&auto=format&fit=crop'
     ],
-    features: ['Eco-Lodge', 'Smoothie Bar', 'Photography Package', 'Zip-lining']
+    features: ['Eco-Lodge', 'Smoothie Bar', 'Photography Package', 'Zip-lining'],
+    coordinates: [9.9803, -85.6532]
   },
   {
     id: '7',
@@ -105,6 +111,7 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1513735492246-483525079686?q=80&w=2069&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop'
     ],
-    features: ['Remote Lodge', 'Bear Watching Tours', 'Volcanic Hot Springs', 'Expedition Support']
+    features: ['Remote Lodge', 'Bear Watching Tours', 'Volcanic Hot Springs', 'Expedition Support'],
+    coordinates: [53.0138, 158.6464]
   }
 ];

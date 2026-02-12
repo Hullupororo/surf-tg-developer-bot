@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import TripCard from './components/TripCard';
 import TripModal from './components/TripModal';
+import SurfMap from './components/SurfMap';
 import { SURF_TRIPS } from './constants';
 import { SurfTrip } from './types';
 
@@ -43,7 +44,7 @@ const App: React.FC = () => {
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <button 
-              onClick={() => document.getElementById('trips')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('map')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-white text-black font-impact text-2xl px-12 py-4 hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95"
             >
               EXPLORE TRIPS
@@ -86,6 +87,18 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Map Section */}
+      <section id="map" className="py-20 bg-neutral-950">
+        <div className="px-6 md:px-12 mb-12">
+          <h2 className="font-impact text-6xl md:text-8xl mb-4">GLOBAL <br /> DESTINATIONS</h2>
+          <p className="text-neutral-400 text-xl max-w-2xl">
+            Explore our curated surf expeditions across the globe. Click on any marker to discover the waves that await.
+          </p>
+        </div>
+        
+        <SurfMap trips={SURF_TRIPS} onTripClick={handleTripClick} />
       </section>
 
       {/* Trips Grid */}

@@ -1,0 +1,49 @@
+/* Import Leaflet CSS */
+@import 'leaflet/dist/leaflet.css';
+
+/* Custom Surf Marker Styles */
+.custom-surf-marker {
+  background: transparent;
+  border: none;
+}
+
+/* Leaflet Popup Custom Styles */
+.leaflet-popup-content-wrapper {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #262626;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+  font-family: 'Inter', sans-serif;
+}
+
+.leaflet-popup-tip {
+  background: #000000;
+  border: 1px solid #262626;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #ffffff;
+  font-size: 24px;
+  padding: 8px 12px;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #10b981;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

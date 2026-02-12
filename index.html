@@ -31,6 +31,52 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        /* Leaflet Custom Styles */
+        .custom-surf-marker {
+            background: transparent;
+            border: none;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: #000000;
+            color: #ffffff;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            width: auto !important;
+        }
+
+        .leaflet-popup-tip {
+            background: #000000;
+        }
+
+        .leaflet-container a.leaflet-popup-close-button {
+            color: #ffffff;
+            font-size: 24px;
+            padding: 8px 12px;
+            font-weight: bold;
+        }
+
+        .leaflet-container a.leaflet-popup-close-button:hover {
+            color: #10b981;
+        }
+
+        /* Animations for markers */
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .animate-ping {
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
     </style>
 </head>
 <body>

@@ -10,6 +10,7 @@ export interface SurfTrip {
   imageUrl: string;
   gallery: string[];
   features: string[];
+  coordinates: [number, number]; // [latitude, longitude]
 }
 
 export interface ModalProps {
