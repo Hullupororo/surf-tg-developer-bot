@@ -1,19 +1,54 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ModalProps } from '../types';
 
 const TripModal: React.FC<ModalProps> = ({ isOpen, onClose, trip }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const scrollYRef = useRef(0);
 
   useEffect(() => {
     if (isOpen) {
+      // Save current scroll position
+      scrollYRef.current = window.scrollY;
+      
+      // Apply styles to prevent scroll but maintain position
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollYRef.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      
       setTimeout(() => setIsVisible(true), 10);
     } else {
-      document.body.style.overflow = 'auto';
+      // Restore scroll position
+      const scrollY = scrollYRef.current;
+      
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      
+      // Restore the scroll position
+      window.scrollTo(0, scrollY);
+      
       setIsVisible(false);
     }
   }, [isOpen]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+    };
+  }, []);
 
   if (!isOpen || !trip) return null;
 

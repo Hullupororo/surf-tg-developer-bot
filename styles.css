@@ -7,6 +7,84 @@
   border: none;
 }
 
+/* Ensure map container has proper background and fills space */
+.leaflet-container {
+  background-color: #171717 !important;
+  font-family: 'Inter', sans-serif;
+  z-index: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Ensure the map fills its parent */
+.leaflet-pane,
+.leaflet-tile-pane,
+.leaflet-overlay-pane,
+.leaflet-shadow-pane,
+.leaflet-marker-pane,
+.leaflet-tooltip-pane,
+.leaflet-popup-pane {
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix for tile loading - ensure complete coverage */
+.leaflet-tile-container {
+  width: 100%;
+  height: 100%;
+  opacity: 1 !important;
+}
+
+.leaflet-tile {
+  width: 256px !important;
+  height: 256px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: absolute;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Ensure tiles render without gaps */
+.leaflet-tile-loaded {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Prevent white gaps between tiles */
+.leaflet-zoom-anim .leaflet-zoom-animated {
+  will-change: transform;
+}
+
+/* Force map layers to render properly with correct z-indices */
+.leaflet-map-pane {
+  z-index: 1;
+}
+
+.leaflet-tile-pane {
+  z-index: 2;
+}
+
+.leaflet-overlay-pane {
+  z-index: 4;
+}
+
+.leaflet-shadow-pane {
+  z-index: 5;
+}
+
+.leaflet-marker-pane {
+  z-index: 6;
+}
+
+.leaflet-tooltip-pane {
+  z-index: 6;
+}
+
+.leaflet-popup-pane {
+  z-index: 7;
+}
+
 /* Leaflet Popup Custom Styles */
 .leaflet-popup-content-wrapper {
   background: #000000;
@@ -38,6 +116,74 @@
 
 .leaflet-container a.leaflet-popup-close-button:hover {
   color: #10b981;
+}
+
+/* Prevent popup from causing map panning */
+.leaflet-popup {
+  position: absolute;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Prevent map from moving when clicking markers */
+.leaflet-container.leaflet-touch-drag {
+  -ms-touch-action: pan-x pan-y;
+  touch-action: pan-x pan-y;
+}
+
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+  -ms-touch-action: pinch-zoom;
+  touch-action: pinch-zoom;
+}
+
+/* Ensure tiles load without flickering */
+.leaflet-fade-anim .leaflet-tile {
+  will-change: opacity;
+  transition: opacity 0.2s;
+}
+
+.leaflet-fade-anim .leaflet-tile-loaded {
+  opacity: 1;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+  transition: transform 0.25s cubic-bezier(0,0,0.25,1);
+}
+
+/* Prevent white background from showing through */
+.leaflet-layer,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-pane > svg,
+.leaflet-pane > canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Ensure map grid doesn't show white lines */
+.leaflet-container {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.leaflet-container a {
+  -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+
+/* Remove any potential white borders/gaps */
+.leaflet-container,
+.leaflet-pane,
+.leaflet-tile-pane {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Fix rendering on retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .leaflet-tile {
+    image-rendering: -webkit-optimize-contrast;
+  }
 }
 
 /* Line clamp utility */

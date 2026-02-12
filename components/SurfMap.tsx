@@ -1,5 +1,5 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useEffect, useRef } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { SurfTrip } from '../types';
 
@@ -36,19 +36,69 @@ const createSurfIcon = () => {
   });
 };
 
+// Component to handle map invalidation after mount
+const MapInvalidator: React.FC = () => {
+  const map = useMap();
+  
+  useEffect(() => {
+    // Force map to recalculate its size after initial render
+    const timer1 = setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+    
+    const timer2 = setTimeout(() => {
+      map.invalidateSize();
+    }, 300);
+
+    const timer3 = setTimeout(() => {
+      map.invalidateSize();
+    }, 600);
+    
+    // Handle window resize
+    const handleResize = () => {
+      map.invalidateSize();
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [map]);
+  
+  return null;
+};
+
 const SurfMap: React.FC<SurfMapProps> = ({ trips, onTripClick }) => {
+  const mapRef = useRef<L.Map | null>(null);
+
   return (
-    <div className="w-full h-[600px] md:h-[700px] relative">
+    <div className="w-full h-[600px] md:h-[700px] relative bg-neutral-900">
       <MapContainer
         center={[20, 0]}
         zoom={2}
         style={{ height: '100%', width: '100%' }}
         className="z-0"
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
+        zoomControl={true}
+        dragging={true}
+        touchZoom={true}
+        doubleClickZoom={true}
+        boxZoom={true}
+        keyboard={true}
+        minZoom={2}
+        maxZoom={18}
+        worldCopyJump={true}
+        ref={mapRef}
       >
+        <MapInvalidator />
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          subdomains={['a', 'b', 'c', 'd']}
         />
         
         {trips.map((trip) => (
@@ -57,10 +107,31 @@ const SurfMap: React.FC<SurfMapProps> = ({ trips, onTripClick }) => {
             position={trip.coordinates}
             icon={createSurfIcon()}
             eventHandlers={{
-              click: () => onTripClick(trip),
+              click: (e) => {
+                // Prevent map from panning to marker
+                const map = e.target._map;
+                if (map) {
+                  // Store current view
+                  const currentCenter = map.getCenter();
+                  const currentZoom = map.getZoom();
+                  
+                  // Trigger modal
+                  onTripClick(trip);
+                  
+                  // Restore view immediately to prevent any panning
+                  setTimeout(() => {
+                    map.setView(currentCenter, currentZoom, { animate: false });
+                  }, 0);
+                }
+              },
             }}
           >
-            <Popup className="custom-popup">
+            <Popup 
+              className="custom-popup"
+              autoPan={false}
+              autoClose={false}
+              closeOnClick={false}
+            >
               <div className="bg-black text-white p-4 min-w-[250px]">
                 <h3 className="font-impact text-2xl mb-2">{trip.title}</h3>
                 <p className="text-neutral-400 text-sm mb-3">{trip.location}</p>
@@ -70,7 +141,10 @@ const SurfMap: React.FC<SurfMapProps> = ({ trips, onTripClick }) => {
                 </div>
                 <p className="text-neutral-300 text-sm mb-4 line-clamp-2">{trip.description}</p>
                 <button 
-                  onClick={() => onTripClick(trip)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onTripClick(trip);
+                  }}
                   className="w-full bg-white text-black py-2 font-impact text-sm hover:bg-neutral-200 transition-colors"
                 >
                   VIEW DETAILS
