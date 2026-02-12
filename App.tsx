@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import TripCard from './components/TripCard';
@@ -35,9 +34,9 @@ const App: React.FC = () => {
           <h2 className="text-neutral-400 font-impact text-xl md:text-2xl mb-4 tracking-[0.2em] animate-pulse">
             BEYOND THE BREAK
           </h2>
-          <h1 className="font-impact text-8xl md:text-[12rem] leading-none mb-8 tracking-tighter">
+          <h1 className="font-impact text-8xl md:text-[12rem] leading-none mb-8 tracking-tighter text-green-500">
             LE SURF <br />
-            <span className="text-neutral-400">SOLIDAIRE</span>
+            <span className="text-green-500">SOLIDAIRE</span>
           </h1>
           <p className="max-w-xl mx-auto text-neutral-400 text-lg md:text-xl font-medium mb-12 italic">
             "Curating the world's most immersive surf expeditions for the conscious traveler."
