@@ -91,5 +91,20 @@ export const SURF_TRIPS: SurfTrip[] = [
       'https://images.unsplash.com/photo-1523315904834-39f28a8d11c8?q=80&w=2070&auto=format&fit=crop'
     ],
     features: ['Eco-Lodge', 'Smoothie Bar', 'Photography Package', 'Zip-lining']
+  },
+  {
+    id: '7',
+    title: 'SIBERIAN FRONTIER',
+    location: 'Kamchatka Peninsula, Russia',
+    description: 'Venture into the untamed wilderness of the Russian Far East. Pristine waves meet volcanic landscapes in one of the world\'s most remote surfing destinations.',
+    price: '$3,500',
+    duration: '9 Days',
+    level: 'Advanced',
+    imageUrl: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?q=80&w=2070&auto=format&fit=crop',
+    gallery: [
+      'https://images.unsplash.com/photo-1513735492246-483525079686?q=80&w=2069&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop'
+    ],
+    features: ['Remote Lodge', 'Bear Watching Tours', 'Volcanic Hot Springs', 'Expedition Support']
   }
 ];
